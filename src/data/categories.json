@@ -1,0 +1,37 @@
+[
+  {
+    "id": 0,
+    "value": "all",
+    "label": "All"
+  },
+  {
+    "id": 1,
+    "value": "art",
+    "label": "Art"
+  },
+  {
+    "id": 2,
+    "value": "biography",
+    "label": "Biography"
+  },
+  {
+    "id": 3,
+    "value": "computers",
+    "label": "Computers"
+  },
+  {
+    "id": 4,
+    "value": "history",
+    "label": "History"
+  },
+  {
+    "id": 5,
+    "value": "medical",
+    "label": "Medical"
+  },
+  {
+    "id": 6,
+    "value": "poetry",
+    "label": "Poetry"
+  }
+]
