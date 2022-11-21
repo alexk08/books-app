@@ -9,9 +9,9 @@ export function Card({ title, imgUrl, category, authors }: Props) {
       </figure>
       <div className="card-body items-center text-center">
         <p className="font-semibold">{category}</p>
-        <h2 className="card-title">{title}</h2>
+        <h2 className="card-title line-clamp-4">{title}</h2>
         <ul>
-          {authors?.map((author, idx) => (
+          {authors?.slice(0, 3)?.map((author, idx) => (
             <li key={idx}>{author}</li>
           ))}
         </ul>
@@ -24,5 +24,5 @@ type Props = {
   title: string;
   imgUrl: string;
   category: string;
-  authors: string[];
+  authors: Array<string>;
 };

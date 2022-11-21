@@ -6,8 +6,9 @@ module.exports = {
       "hero-pattern": "url('/src/assets/bg/bg-books.jpg')",
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
-  daisyui: {
-    // themes: ["garden"],
-  },
+  plugins: [
+    require("@tailwindcss/typography"),
+    require("daisyui"),
+    require("@tailwindcss/line-clamp"),
+  ],
 };

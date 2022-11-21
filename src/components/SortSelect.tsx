@@ -1,18 +1,12 @@
 import sortItems from "../data/sort-items.json";
+import { observer } from "mobx-react-lite";
+import { formStore } from "../store/formStore";
+import { Select } from "../ui-kit";
 
-export function SortSelect() {
-  return (
-    <div className="form-control w-full ml-2">
-      <label className="label">
-        <span className="label-text text-neutral-content">Sorting by</span>
-      </label>
-      <select className="select select-bordered w-full" defaultValue={sortItems[0].value}>
-        {sortItems.map((item) => (
-          <option value={item.value} key={item.id}>
-            {item.label}
-          </option>
-        ))}
-      </select>
-    </div>
-  );
-}
+export const SortSelect = observer(() => (
+  <Select
+    onChange={(e) => formStore.setOrderedBy(e.target.value)}
+    value={formStore.orderedBy}
+    options={sortItems}
+  />
+));

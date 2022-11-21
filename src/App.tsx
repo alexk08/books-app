@@ -5,7 +5,7 @@ import { SortSelect } from "./components/SortSelect";
 
 export default function App() {
   return (
-    <div className="max-h-screen flex flex-col">
+    <div className="h-screen max-h-screen flex flex-col">
       <div className="hero bg-hero-pattern">
         <div className="hero-overlay bg-opacity-60"></div>
         <div className="hero-content text-center w-full min-w-fit">
@@ -16,14 +16,14 @@ export default function App() {
               </h1>
               <SearchBar />
             </div>
-            <div className="flex mb-5">
+            <div className="flex mb-5 gap-2">
               <CategoriesFilter />
               <SortSelect />
             </div>
           </div>
         </div>
       </div>
-      <div className="overflow-auto p-4 md:p-8 bg-base-300">
+      <div className="overflow-auto p-4 md:p-8 bg-base-300 h-full">
         <div className="mx-auto max-w-7xl">
           <Cards />
         </div>
