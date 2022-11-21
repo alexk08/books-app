@@ -1,7 +1,9 @@
-export function Card({ title, imgUrl, category, authors }: Props) {
+import { Link } from "react-router-dom";
+
+export function Book({ title, imgUrl, category, authors, id }: Props) {
   return (
-    <a
-      href="/"
+    <Link
+      to={`book/${id}`}
       className="card card-compact w-72 bg-base-100 shadow-xl justify-self-center transition ease-in-out delay-100 hover:scale-105 duration-200"
     >
       <figure className="px-4 pt-4">
@@ -16,7 +18,7 @@ export function Card({ title, imgUrl, category, authors }: Props) {
           ))}
         </ul>
       </div>
-    </a>
+    </Link>
   );
 }
 
@@ -25,4 +27,5 @@ type Props = {
   imgUrl: string;
   category: string;
   authors: Array<string>;
+  id: string;
 };

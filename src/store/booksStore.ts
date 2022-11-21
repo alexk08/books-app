@@ -1,6 +1,6 @@
 import { makeAutoObservable, runInAction } from "mobx";
-import { getBooks, Params } from "../api";
-import type { Book } from "../types";
+import { getBooks } from "../api";
+import type { Book, Params } from "../types";
 
 export class BooksStore {
   books: Array<Book> = [];

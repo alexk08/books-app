@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from "axios";
-import type { DataType } from "../types";
+import type { DataType, Params } from "../types";
 
 const baseURL = "https://www.googleapis.com/books/v1";
 
@@ -31,9 +31,12 @@ export async function getBooks(params?: Params) {
   }
 }
 
-export type Params = {
-  searchTerm?: string;
-  category?: string;
-  orderedBy?: string;
-  startIndex?: number;
-};
+export async function getBook(id?: string) {
+  try {
+    const response: AxiosResponse<DataType> = await booksApi.get(`/volumes/${id}`);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw new Error("Couldn't fetch");
+  }
+}

@@ -4,6 +4,6 @@
 
 @layer components {
   body {
-    @apply min-w-[320px];
+    @apply min-w-[320px] bg-base-300 min-h-screen;
   }
 }

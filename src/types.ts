@@ -1,12 +1,15 @@
 export type Book = {
   id: string;
   volumeInfo: {
-    title: string;
-    imageLinks: {
-      thumbnail: string;
+    title?: string;
+    imageLinks?: {
+      thumbnail?: string;
+      medium?: string;
     };
-    categories: Array<string>;
-    authors: Array<string>;
+    publishedDate?: string;
+    description?: string;
+    categories?: Array<string>;
+    authors?: Array<string>;
   };
 };
 
@@ -19,4 +22,11 @@ export type SelectOption = {
   id: number;
   value: string;
   label: string;
+};
+
+export type Params = {
+  searchTerm?: string;
+  category?: string;
+  orderedBy?: string;
+  startIndex?: number;
 };
