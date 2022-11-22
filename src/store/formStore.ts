@@ -1,5 +1,6 @@
-import { makeAutoObservable } from "mobx";
+import { makeAutoObservable, reaction } from "mobx";
 import { booksStore } from "./booksStore";
+import debounce from "lodash.debounce";
 
 export class FormStore {
   searchTerm = "";
@@ -8,11 +9,18 @@ export class FormStore {
 
   constructor() {
     makeAutoObservable(this);
+
+    reaction(
+      () => this.searchTerm,
+
+      debounce(() => {
+        this.fetchBooks();
+      }, 500)
+    );
   }
 
   setSearchTerm(value: string) {
     this.searchTerm = value;
-    this.fetchBooks();
   }
 
   setCategory(value: string) {
