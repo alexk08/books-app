@@ -1,6 +1,7 @@
 import * as React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { getBook } from "./api";
+import { Loader } from "./ui-kit";
 
 const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
 const SearchPage = React.lazy(() => import("./pages/SearchPage"));
@@ -22,7 +23,7 @@ const router = createBrowserRouter([
 
 export default function App() {
   return (
-    <React.Suspense fallback={<div>Loading...</div>}>
+    <React.Suspense fallback={<Loader size="w-10 h-10" color="text-neutral" fullScreen />}>
       <RouterProvider router={router} />
     </React.Suspense>
   );

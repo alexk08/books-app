@@ -5,10 +5,11 @@ export function Loader(props: Props) {
     <span
       className={classnames(
         "flex items-center justify-center",
-        props.color ?? "text-primary-content"
+        props.color ?? "text-primary-content",
+        { "min-h-screen min-w-full": props.fullScreen }
       )}
     >
-      <span>loading...</span>
+      <span>Loading...</span>
       <svg
         className={classnames("animate-spin flex-shrink-0 ml-2", props.size ?? "h-4 w-4")}
         xmlns="http://www.w3.org/2000/svg"
@@ -36,4 +37,5 @@ export function Loader(props: Props) {
 type Props = {
   size?: string;
   color?: string;
+  fullScreen?: boolean;
 };
