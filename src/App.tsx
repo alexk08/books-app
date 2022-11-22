@@ -1,7 +1,10 @@
+import * as React from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import BookPage, { bookLoader } from "./pages/BookPage";
-import { ErrorPage } from "./pages/ErrorPage";
-import SearchPage from "./pages/SearchPage";
+import { getBook } from "./api";
+
+const ErrorPage = React.lazy(() => import("./pages/ErrorPage"));
+const SearchPage = React.lazy(() => import("./pages/SearchPage"));
+const BookPage = React.lazy(() => import("./pages/BookPage"));
 
 const router = createBrowserRouter([
   {
@@ -12,11 +15,15 @@ const router = createBrowserRouter([
   {
     path: "book/:id",
     element: <BookPage />,
-    loader: bookLoader,
+    loader: ({ params }) => getBook(params.id),
     errorElement: <ErrorPage />,
   },
 ]);
 
 export default function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <React.Suspense fallback={<div>Loading...</div>}>
+      <RouterProvider router={router} />
+    </React.Suspense>
+  );
 }

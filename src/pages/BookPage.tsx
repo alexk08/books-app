@@ -1,11 +1,6 @@
-import { getBook } from "../api";
-import { useLoaderData, LoaderFunctionArgs } from "react-router-dom";
+import { useLoaderData } from "react-router-dom";
 import type { Book } from "../types";
-import { Link } from "react-router-dom";
-
-export async function bookLoader({ params }: LoaderFunctionArgs) {
-  return getBook(params.id);
-}
+import { HomeButton } from "../ui-kit/HomeButton";
 
 export default function BookPage() {
   const data = useLoaderData() as Book;
@@ -45,9 +40,7 @@ export default function BookPage() {
           <div>
             <small>published: {volumeInfo.publishedDate}</small>
           </div>
-          <Link to="/" className="btn btn-primary mt-10">
-            back home
-          </Link>
+          <HomeButton />
         </div>
       </div>
     </div>

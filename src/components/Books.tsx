@@ -10,6 +10,11 @@ export const Books = observer(() => {
   const loading = state === "pending" && !books.length;
   const loadingMore = state === "pending" && !!books.length;
 
+  const error = state === "error" && !books.length;
+  const errorLoadMore = state === "error" && !!books.length;
+
+  const showLoadMoreButton = totalCount > startIndex;
+
   function loadMore() {
     booksStore.fetchMoreBooks({
       searchTerm,
@@ -23,12 +28,11 @@ export const Books = observer(() => {
     return <div className="text-center">Let's try to find smth!</div>;
   }
 
-  if (state)
-    if (loading) {
-      return <Loader size="w-10 h-10" color="text-neutral" />;
-    }
+  if (loading) {
+    return <Loader size="w-10 h-10" color="text-neutral" />;
+  }
 
-  if (state === "error") {
+  if (error) {
     return <Error />;
   }
 
@@ -48,15 +52,14 @@ export const Books = observer(() => {
           );
         })}
       </ul>
-      {(totalCount || 0) > startIndex ? (
-        <div className="flex mt-5 justify-center">
+      {showLoadMoreButton ? (
+        <div className="flex my-5 justify-center">
           <button className="btn btn-primary w-40" onClick={loadMore}>
             {loadingMore ? <Loader /> : "load more"}
           </button>
         </div>
-      ) : (
-        <div></div>
-      )}
+      ) : null}
+      {errorLoadMore ? <Error /> : null}
     </div>
   ) : (
     <div className="text-center">Nothing found. Try again, plz.</div>
